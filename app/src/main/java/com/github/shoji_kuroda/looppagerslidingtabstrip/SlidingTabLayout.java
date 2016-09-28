@@ -7,9 +7,9 @@ import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -340,7 +340,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private class TabClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            for(SlidingTabStrip tab : tabStrip) {
+            for (SlidingTabStrip tab : tabStrip) {
                 for (int i = 0; i < tab.getChildCount(); i++) {
                     if (v == tab.getChildAt(i)) {
                         viewPager.setCurrentItem(i);
