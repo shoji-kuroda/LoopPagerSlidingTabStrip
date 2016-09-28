@@ -340,10 +340,17 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private class TabClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            for (SlidingTabStrip tab : tabStrip) {
+            for (int t = 0; t < tabStrip.length; t++) {
+                SlidingTabStrip tab = tabStrip[t];
                 for (int i = 0; i < tab.getChildCount(); i++) {
                     if (v == tab.getChildAt(i)) {
-                        viewPager.setCurrentItem(i);
+                        if (t == 0 && i == tab.getChildCount() - 1) {
+                            viewPager.setCurrentItem(-1);
+                        } else if (t == 2 && i == 0) {
+                            viewPager.setCurrentItem(tab.getChildCount());
+                        } else {
+                            viewPager.setCurrentItem(i);
+                        }
                         return;
                     }
                 }
